@@ -1,0 +1,72 @@
+{
+  "descricao": "EXEMPLO DE TESTE UNITÁRIO - OrcamentoServiceTests.cs",
+  "nota": "Este arquivo mostra como seria a estrutura do teste. Para usar xUnit, crie um projeto de testes separado.",
+  "estruturaDoTeste": {
+    "classe": "OrcamentoServiceTests",
+    "framework": "xUnit",
+    "metodos": [
+      {
+        "nome": "CriarOrcamento_ComDadosValidos_DeveRetornarOrcamentoComSucesso",
+        "tipo": "[Fact]",
+        "descricao": "Testa criação com dados corretos"
+      },
+      {
+        "nome": "CriarOrcamento_ComClienteIdInvalido_DevelancaExcecao",
+        "tipo": "[Fact]",
+        "descricao": "ClienteId = 0 deve lançar exceção"
+      },
+      {
+        "nome": "CriarOrcamento_ComVeiculoIdInvalido_DevelancaExcecao",
+        "tipo": "[Fact]",
+        "descricao": "VeiculoId = -5 deve lançar exceção"
+      },
+      {
+        "nome": "CriarOrcamento_SemItens_DevelancaExcecao",
+        "tipo": "[Fact]",
+        "descricao": "Lista vazia deve lançar exceção"
+      },
+      {
+        "nome": "CriarOrcamento_ComDescricaoVazia_DevelancaExcecao",
+        "tipo": "[Fact]",
+        "descricao": "Descrição vazia deve lançar exceção"
+      },
+      {
+        "nome": "CriarOrcamento_ComQuantidadeInvalida_DevelancaExcecao",
+        "tipo": "[Theory] [InlineData(0, -1, -100)]",
+        "descricao": "Quantidade <= 0 deve lançar exceção"
+      },
+      {
+        "nome": "CriarOrcamento_ComValorUnitarioInvalido_DevelancaExcecao",
+        "tipo": "[Theory] [InlineData(0, -50, -0.01)]",
+        "descricao": "Valor <= 0 deve lançar exceção"
+      },
+      {
+        "nome": "CriarOrcamento_ComQuantidadeDecimal_DeveCalcularTotalCorreto",
+        "tipo": "[Fact]",
+        "descricao": "2.5 * 150 = 375 correto"
+      },
+      {
+        "nome": "CriarOrcamento_ComMultiplosErros_DeveRetornarTodosOsErros",
+        "tipo": "[Fact]",
+        "descricao": "Todos os erros devem ser coletados"
+      },
+      {
+        "nome": "CriarOrcamento_MultiplosChamadas_DeveIncrementarID",
+        "tipo": "[Fact]",
+        "descricao": "ID deve incrementar em cada chamada"
+      }
+    ]
+  },
+  "padraoDoTeste": {
+    "arrange": "Preparar dados de teste",
+    "act": "Executar o método a testar",
+    "assert": "Verificar se resultado é esperado"
+  },
+  "como_usar": [
+    "1. Criar projeto de testes separado: dotnet new xunit -n OficinalAPI.Tests",
+    "2. Adicionar referência: dotnet add reference ../OficinalAPI/OficinalAPI.csproj",
+    "3. Copiar os testes para o novo projeto",
+    "4. Executar: dotnet test",
+    "5. Ver cobertura: dotnet test /p:CollectCoverage=true"
+  ]
+}

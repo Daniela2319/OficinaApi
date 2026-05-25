@@ -1,0 +1,186 @@
+@baseUrl = https://localhost:7259
+@contentType = application/json
+
+###
+# Criar orçamento com sucesso
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 1,
+      "valorUnitario": 120.00
+    },
+    {
+      "descricao": "Filtro de óleo",
+      "quantidade": 1,
+      "valorUnitario": 45.00
+    }
+  ]
+}
+
+###
+# Erro: ClienteId inválido
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 0,
+  "veiculoId": 25,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 1,
+      "valorUnitario": 120.00
+    }
+  ]
+}
+
+###
+# Erro: VeiculoId inválido
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 10,
+  "veiculoId": -5,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 1,
+      "valorUnitario": 120.00
+    }
+  ]
+}
+
+###
+# Erro: Sem itens
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": []
+}
+
+###
+# Erro: Item com descrição vazia
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": [
+    {
+      "descricao": "",
+      "quantidade": 1,
+      "valorUnitario": 120.00
+    }
+  ]
+}
+
+###
+# Erro: Item com quantidade inválida
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 0,
+      "valorUnitario": 120.00
+    }
+  ]
+}
+
+###
+# Erro: Item com valor unitário inválido
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 1,
+      "valorUnitario": -50.00
+    }
+  ]
+}
+
+###
+# Erro: Múltiplos erros de validação
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": -1,
+  "veiculoId": 0,
+  "itens": [
+    {
+      "descricao": "",
+      "quantidade": -2,
+      "valorUnitario": 0
+    },
+    {
+      "descricao": "Serviço B",
+      "quantidade": 0,
+      "valorUnitario": -100
+    }
+  ]
+}
+
+###
+# Orçamento com múltiplos itens
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 15,
+  "veiculoId": 30,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 1,
+      "valorUnitario": 120.00
+    },
+    {
+      "descricao": "Filtro de ar",
+      "quantidade": 2,
+      "valorUnitario": 35.50
+    },
+    {
+      "descricao": "Limpeza de freio",
+      "quantidade": 1,
+      "valorUnitario": 200.00
+    }
+  ]
+}
+
+###
+# Orçamento com quantidade decimal
+POST {{baseUrl}}/api/orcamentos/criar
+Content-Type: {{contentType}}
+
+{
+  "clienteId": 20,
+  "veiculoId": 40,
+  "itens": [
+    {
+      "descricao": "Serviço por hora",
+      "quantidade": 2.5,
+      "valorUnitario": 150.00
+    }
+  ]
+}

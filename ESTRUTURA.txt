@@ -1,0 +1,143 @@
+📁 OficinalAPI/
+│
+├── 📄 Program.cs                           # Configuração principal da aplicação
+├── 📄 OficinalAPI.csproj                   # Arquivo de projeto .NET
+├── 📄 appsettings.json                     # Configurações da aplicação
+├── 📄 .gitignore                           # Arquivo Git
+│
+├── 📄 README.md                            # 📖 Documentação principal (LEIA PRIMEIRO!)
+├── 📄 DEVELOPMENT.md                       # 🛠️ Guia de desenvolvimento
+├── 📄 ARQUITETURA.md                       # 🏗️ Diagrama e explicação da arquitetura
+├── 📄 CHANGELOG.md                         # 📝 Histórico de mudanças e roadmap
+├── 📄 requisicoes.http                     # 🧪 Exemplos de requisições HTTP
+│
+├── 📁 Models/                              # 📊 DTOs e estruturas de dados
+│   ├── ItemOrcamentoDto.cs                 # Item do orçamento
+│   ├── CriarOrcamentoRequest.cs            # Requisição de criação
+│   ├── OrcamentoResponse.cs                # Resposta com orçamento
+│   └── ErroResponse.cs                     # Resposta de erro padronizada
+│
+├── 📁 Controllers/                         # 🎯 Endpoints REST
+│   └── OrcamentosController.cs             # POST /api/orcamentos/criar
+│
+├── 📁 Services/                            # 💼 Lógica de negócio
+│   └── OrcamentoService.cs                 # Interface + Implementação
+│
+├── 📁 Validators/                          # ✅ Validações
+│   └── OrcamentoValidator.cs               # Validação de orçamento
+│
+├── 📁 Exceptions/                          # 🚨 Exceções customizadas
+│   ├── OrcamentoValidacaoException.cs      # Erro de validação
+│   └── RecursoNaoEncontradoException.cs    # Recurso não encontrado
+│
+├── 📁 Middleware/                          # 🔄 Processamento global
+│   └── ExceptionHandlingMiddleware.cs      # Tratamento de exceções
+│
+├── 📁 Properties/                          # ⚙️ Configurações de projeto
+│   └── launchSettings.json                 # Configurações de execução
+│
+└── 📁 Testes_Exemplos/                     # 🧪 Testes unitários (exemplo)
+    ├── OrcamentoServiceTests.cs            # 10 testes de exemplo
+    └── README.md                           # Guia de testes
+
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 QUICK START
+
+1️⃣  Restaurar dependências:
+    dotnet restore
+
+2️⃣  Compilar:
+    dotnet build
+
+3️⃣  Executar:
+    dotnet run
+
+4️⃣  Acessar:
+    https://localhost:7259 (Swagger UI)
+
+═══════════════════════════════════════════════════════════════════
+
+📡 ENDPOINT
+
+POST /api/orcamentos/criar
+
+Request:
+{
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": [
+    {
+      "descricao": "Troca de óleo",
+      "quantidade": 1,
+      "valorUnitario": 120.00
+    }
+  ]
+}
+
+Response (201 Created):
+{
+  "id": 1,
+  "clienteId": 10,
+  "veiculoId": 25,
+  "itens": [...],
+  "valorTotal": 120.00,
+  "dataCriacao": "2026-05-25T...",
+  "status": "Aberto"
+}
+
+═══════════════════════════════════════════════════════════════════
+
+✅ VALIDAÇÕES IMPLEMENTADAS
+
+✓ ClienteId obrigatório e > 0
+✓ VeiculoId obrigatório e > 0
+✓ Mínimo 1 item no orçamento
+✓ Descrição não pode ser vazia
+✓ Quantidade > 0
+✓ Valor unitário > 0
+✓ Cálculo automático do total
+✓ Erros padronizados com detalhes
+
+═══════════════════════════════════════════════════════════════════
+
+🏗️ PADRÕES DE PROJETO
+
+1. REST API Pattern
+2. Service Pattern
+3. Dependency Injection
+4. DTO Pattern
+5. Validator Pattern
+6. Exception Handling Middleware
+7. Logging Pattern
+
+═══════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTAÇÃO
+
+START HERE 👉  README.md              (Visão geral e guia de uso)
+                DEVELOPMENT.md        (Como desenvolvedor no projeto)
+                ARQUITETURA.md        (Diagramas e fluxos)
+                CHANGELOG.md          (Histórico e roadmap)
+                requisicoes.http      (Exemplos de testes)
+                Testes_Exemplos/      (Testes unitários)
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 PRÓXIMAS MELHORIAS
+
+- Banco de dados (SQL Server/PostgreSQL)
+- Autenticação JWT
+- Mais endpoints (GET, PUT, DELETE)
+- Testes de integração
+- Cache com Redis
+- Auditoria de alterações
+
+═══════════════════════════════════════════════════════════════════
+
+Linguagem: C# (.NET 8)
+Data: Maio de 2026
+Status: ✅ Pronto para uso
+
+═══════════════════════════════════════════════════════════════════
