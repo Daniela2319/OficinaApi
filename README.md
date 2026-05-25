@@ -398,8 +398,8 @@ curl -X POST https://localhost:7259/api/orcamentos/criar \
 ---
 
 ## 👨‍💻 Desenvolvedor
+Daniela Velter
 
-Criado como exemplo de API RESTful profissional em C# seguindo as melhores práticas de desenvolvimento.
 
 ---
 
