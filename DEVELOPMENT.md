@@ -11,7 +11,7 @@
 
 ```bash
 # Clonar repositório
-git clone <repo-url>
+git clone https://github.com/Daniela2319/OficinaApi.git
 
 # Entrar na pasta do projeto
 cd OficinalAPI
